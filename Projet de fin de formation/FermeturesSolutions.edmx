@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fermetures_solutionsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Chantier">
+          <Key>
+            <PropertyRef Name="IdChantier" />
+          </Key>
+          <Property Name="IdChantier" Type="int" Nullable="false" />
+          <Property Name="NomChantier" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdresseChantier" Type="text" />
+          <Property Name="DateDebChantier" Type="date" Nullable="false" />
+          <Property Name="DateFinProj" Type="date" />
+          <Property Name="statut" Type="varchar" MaxLength="50" />
+          <Property Name="ChefProj" Type="varchar" MaxLength="50" />
+          <Property Name="IdClient" Type="int" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="int" Nullable="false" />
+          <Property Name="NomClient" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdresseClient" Type="varchar" MaxLength="100" />
+          <Property Name="TelCLient" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Congee">
+          <Key>
+            <PropertyRef Name="IdConge" />
+          </Key>
+          <Property Name="IdConge" Type="int" Nullable="false" />
+          <Property Name="IdEmp" Type="varchar" MaxLength="50" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="Reason" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DemangdeAugS">
+          <Key>
+            <PropertyRef Name="IdDemande" />
+          </Key>
+          <Property Name="IdDemande" Type="int" Nullable="false" />
+          <Property Name="IdEmp" Type="varchar" MaxLength="50" />
+          <Property Name="etat" Type="bit" />
+        </EntityType>
+        <EntityType Name="Depatement">
+          <Key>
+            <PropertyRef Name="idDepartement" />
+          </Key>
+          <Property Name="idDepartement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomDepartement" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EmployeeTable">
+          <Key>
+            <PropertyRef Name="IdEmp" />
+          </Key>
+          <Property Name="IdEmp" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrenomEmp" Type="varchar" MaxLength="50" />
+          <Property Name="NomEmp" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailEmp" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelEmp" Type="nvarchar" MaxLength="10" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="DateNEmp" Type="date" />
+          <Property Name="SexeEmp" Type="varchar" MaxLength="50" />
+          <Property Name="DateRecEmp" Type="date" />
+          <Property Name="idDepartement" Type="int" />
+          <Property Name="PosteEmp" Type="nvarchar" MaxLength="50" />
+          <Property Name="SalaireEmp" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pointsEmp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reclamation">
+          <Key>
+            <PropertyRef Name="idReclamation" />
+          </Key>
+          <Property Name="idReclamation" Type="int" Nullable="false" />
+          <Property Name="idClient" Type="int" />
+          <Property Name="idChantier" Type="int" />
+          <Property Name="dateRec" Type="date" />
+          <Property Name="Remarque" Type="text" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Pseudo" />
+          </Key>
+          <Property Name="IdEmp" Type="varchar" MaxLength="50" />
+          <Property Name="Pseudo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Chantier__ChefPr__52593CB8">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="Chantier" Type="Self.Chantier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="Chantier">
+              <PropertyRef Name="ChefProj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chantier__IdClie__76969D2E">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Chantier" Type="Self.Chantier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Chantier">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Congee__IdEmp__49C3F6B7">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="Congee" Type="Self.Congee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="Congee">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DemangdeA__IdEmp__4D94879B">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="DemangdeAugS" Type="Self.DemangdeAugS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="DemangdeAugS">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeT__idDep__59063A47">
+          <End Role="Depatement" Type="Self.Depatement" Multiplicity="0..1" />
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depatement">
+              <PropertyRef Name="idDepartement" />
+            </Principal>
+            <Dependent Role="EmployeeTable">
+              <PropertyRef Name="idDepartement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reclamati__idCha__7A672E12">
+          <End Role="Chantier" Type="Self.Chantier" Multiplicity="0..1" />
+          <End Role="reclamation" Type="Self.reclamation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chantier">
+              <PropertyRef Name="IdChantier" />
+            </Principal>
+            <Dependent Role="reclamation">
+              <PropertyRef Name="idChantier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reclamati__idCli__797309D9">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="reclamation" Type="Self.reclamation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="reclamation">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__IdEmp__4AB81AF0">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fermetures_solutionsModelStoreContainer">
+          <EntitySet Name="Chantier" EntityType="Self.Chantier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Congee" EntityType="Self.Congee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DemangdeAugS" EntityType="Self.DemangdeAugS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Depatement" EntityType="Self.Depatement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeTable" EntityType="Self.EmployeeTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reclamation" EntityType="Self.reclamation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Chantier__ChefPr__52593CB8" Association="Self.FK__Chantier__ChefPr__52593CB8">
+            <End Role="EmployeeTable" EntitySet="EmployeeTable" />
+            <End Role="Chantier" EntitySet="Chantier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chantier__IdClie__76969D2E" Association="Self.FK__Chantier__IdClie__76969D2E">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Chantier" EntitySet="Chantier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Congee__IdEmp__49C3F6B7" Association="Self.FK__Congee__IdEmp__49C3F6B7">
+            <End Role="EmployeeTable" EntitySet="EmployeeTable" />
+            <End Role="Congee" EntitySet="Congee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DemangdeA__IdEmp__4D94879B" Association="Self.FK__DemangdeA__IdEmp__4D94879B">
+            <End Role="EmployeeTable" EntitySet="EmployeeTable" />
+            <End Role="DemangdeAugS" EntitySet="DemangdeAugS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeT__idDep__59063A47" Association="Self.FK__EmployeeT__idDep__59063A47">
+            <End Role="Depatement" EntitySet="Depatement" />
+            <End Role="EmployeeTable" EntitySet="EmployeeTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reclamati__idCha__7A672E12" Association="Self.FK__reclamati__idCha__7A672E12">
+            <End Role="Chantier" EntitySet="Chantier" />
+            <End Role="reclamation" EntitySet="reclamation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reclamati__idCli__797309D9" Association="Self.FK__reclamati__idCli__797309D9">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="reclamation" EntitySet="reclamation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__IdEmp__4AB81AF0" Association="Self.FK__UserTable__IdEmp__4AB81AF0">
+            <End Role="EmployeeTable" EntitySet="EmployeeTable" />
+            <End Role="UserTable" EntitySet="UserTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fermetures_solutionsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Chantier">
+          <Key>
+            <PropertyRef Name="IdChantier" />
+          </Key>
+          <Property Name="IdChantier" Type="Int32" Nullable="false" />
+          <Property Name="NomChantier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdresseChantier" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateDebChantier" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinProj" Type="DateTime" Precision="0" />
+          <Property Name="statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChefProj" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeTable" Relationship="Self.FK__Chantier__ChefPr__52593CB8" FromRole="Chantier" ToRole="EmployeeTable" />
+          <Property Name="IdClient" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="fermetures_solutionsModel.FK__Chantier__IdClie__76969D2E" FromRole="Chantier" ToRole="Client" />
+          <NavigationProperty Name="reclamations" Relationship="fermetures_solutionsModel.FK__reclamati__idCha__7A672E12" FromRole="Chantier" ToRole="reclamation" />
+        </EntityType>
+        <EntityType Name="Congee">
+          <Key>
+            <PropertyRef Name="IdConge" />
+          </Key>
+          <Property Name="IdConge" Type="Int32" Nullable="false" />
+          <Property Name="IdEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeeTable" Relationship="Self.FK__Congee__IdEmp__49C3F6B7" FromRole="Congee" ToRole="EmployeeTable" />
+        </EntityType>
+        <EntityType Name="DemangdeAug">
+          <Key>
+            <PropertyRef Name="IdDemande" />
+          </Key>
+          <Property Name="IdDemande" Type="Int32" Nullable="false" />
+          <Property Name="IdEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="etat" Type="Boolean" />
+          <NavigationProperty Name="EmployeeTable" Relationship="Self.FK__DemangdeA__IdEmp__4D94879B" FromRole="DemangdeAugS" ToRole="EmployeeTable" />
+        </EntityType>
+        <EntityType Name="Depatement">
+          <Key>
+            <PropertyRef Name="idDepartement" />
+          </Key>
+          <Property Name="idDepartement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomDepartement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmployeeTables" Relationship="Self.FK__EmployeeT__idDep__59063A47" FromRole="Depatement" ToRole="EmployeeTable" />
+        </EntityType>
+        <EntityType Name="EmployeeTable">
+          <Key>
+            <PropertyRef Name="IdEmp" />
+          </Key>
+          <Property Name="IdEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrenomEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NomEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MailEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelEmp" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateNEmp" Type="DateTime" Precision="0" />
+          <Property Name="SexeEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateRecEmp" Type="DateTime" Precision="0" />
+          <Property Name="idDepartement" Type="Int32" />
+          <Property Name="PosteEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalaireEmp" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pointsEmp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Chantiers" Relationship="Self.FK__Chantier__ChefPr__52593CB8" FromRole="EmployeeTable" ToRole="Chantier" />
+          <NavigationProperty Name="Congees" Relationship="Self.FK__Congee__IdEmp__49C3F6B7" FromRole="EmployeeTable" ToRole="Congee" />
+          <NavigationProperty Name="DemangdeAugS" Relationship="Self.FK__DemangdeA__IdEmp__4D94879B" FromRole="EmployeeTable" ToRole="DemangdeAugS" />
+          <NavigationProperty Name="Depatement" Relationship="Self.FK__EmployeeT__idDep__59063A47" FromRole="EmployeeTable" ToRole="Depatement" />
+          <NavigationProperty Name="UserTables" Relationship="Self.FK__UserTable__IdEmp__4AB81AF0" FromRole="EmployeeTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Pseudo" />
+          </Key>
+          <Property Name="IdEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pseudo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Admin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EmployeeTable" Relationship="Self.FK__UserTable__IdEmp__4AB81AF0" FromRole="UserTable" ToRole="EmployeeTable" />
+        </EntityType>
+        <Association Name="FK__Chantier__ChefPr__52593CB8">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="Chantier" Type="Self.Chantier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="Chantier">
+              <PropertyRef Name="ChefProj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Congee__IdEmp__49C3F6B7">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="Congee" Type="Self.Congee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="Congee">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DemangdeA__IdEmp__4D94879B">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="DemangdeAugS" Type="Self.DemangdeAug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="DemangdeAugS">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EmployeeT__idDep__59063A47">
+          <End Role="Depatement" Type="Self.Depatement" Multiplicity="0..1" />
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depatement">
+              <PropertyRef Name="idDepartement" />
+            </Principal>
+            <Dependent Role="EmployeeTable">
+              <PropertyRef Name="idDepartement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserTable__IdEmp__4AB81AF0">
+          <End Role="EmployeeTable" Type="Self.EmployeeTable" Multiplicity="0..1" />
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeTable">
+              <PropertyRef Name="IdEmp" />
+            </Principal>
+            <Dependent Role="UserTable">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="fermeturesSolutionsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Chantiers" EntityType="Self.Chantier" />
+          <EntitySet Name="Congees" EntityType="Self.Congee" />
+          <EntitySet Name="DemangdeAugS" EntityType="Self.DemangdeAug" />
+          <EntitySet Name="Depatements" EntityType="Self.Depatement" />
+          <EntitySet Name="EmployeeTables" EntityType="Self.EmployeeTable" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK__Chantier__ChefPr__52593CB8" Association="Self.FK__Chantier__ChefPr__52593CB8">
+            <End Role="EmployeeTable" EntitySet="EmployeeTables" />
+            <End Role="Chantier" EntitySet="Chantiers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Congee__IdEmp__49C3F6B7" Association="Self.FK__Congee__IdEmp__49C3F6B7">
+            <End Role="EmployeeTable" EntitySet="EmployeeTables" />
+            <End Role="Congee" EntitySet="Congees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DemangdeA__IdEmp__4D94879B" Association="Self.FK__DemangdeA__IdEmp__4D94879B">
+            <End Role="EmployeeTable" EntitySet="EmployeeTables" />
+            <End Role="DemangdeAugS" EntitySet="DemangdeAugS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EmployeeT__idDep__59063A47" Association="Self.FK__EmployeeT__idDep__59063A47">
+            <End Role="Depatement" EntitySet="Depatements" />
+            <End Role="EmployeeTable" EntitySet="EmployeeTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserTable__IdEmp__4AB81AF0" Association="Self.FK__UserTable__IdEmp__4AB81AF0">
+            <End Role="EmployeeTable" EntitySet="EmployeeTables" />
+            <End Role="UserTable" EntitySet="UserTables" />
+          </AssociationSet>
+          <EntitySet Name="Clients" EntityType="fermetures_solutionsModel.Client" />
+          <AssociationSet Name="FK__Chantier__IdClie__76969D2E" Association="fermetures_solutionsModel.FK__Chantier__IdClie__76969D2E">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Chantier" EntitySet="Chantiers" />
+          </AssociationSet>
+          <EntitySet Name="reclamations" EntityType="fermetures_solutionsModel.reclamation" />
+          <AssociationSet Name="FK__reclamati__idCha__7A672E12" Association="fermetures_solutionsModel.FK__reclamati__idCha__7A672E12">
+            <End Role="Chantier" EntitySet="Chantiers" />
+            <End Role="reclamation" EntitySet="reclamations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__reclamati__idCli__797309D9" Association="fermetures_solutionsModel.FK__reclamati__idCli__797309D9">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="reclamation" EntitySet="reclamations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="idClient" />
+          </Key>
+          <Property Name="idClient" Type="Int32" Nullable="false" />
+          <Property Name="NomClient" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdresseClient" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TelCLient" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Chantiers" Relationship="fermetures_solutionsModel.FK__Chantier__IdClie__76969D2E" FromRole="Client" ToRole="Chantier" />
+          <NavigationProperty Name="reclamations" Relationship="fermetures_solutionsModel.FK__reclamati__idCli__797309D9" FromRole="Client" ToRole="reclamation" />
+        </EntityType>
+        <Association Name="FK__Chantier__IdClie__76969D2E">
+          <End Type="fermetures_solutionsModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="fermetures_solutionsModel.Chantier" Role="Chantier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="Chantier">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="reclamation">
+          <Key>
+            <PropertyRef Name="idReclamation" />
+          </Key>
+          <Property Name="idReclamation" Type="Int32" Nullable="false" />
+          <Property Name="idClient" Type="Int32" />
+          <Property Name="idChantier" Type="Int32" />
+          <Property Name="dateRec" Type="DateTime" Precision="0" />
+          <Property Name="Remarque" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Chantier" Relationship="fermetures_solutionsModel.FK__reclamati__idCha__7A672E12" FromRole="reclamation" ToRole="Chantier" />
+          <NavigationProperty Name="Client" Relationship="fermetures_solutionsModel.FK__reclamati__idCli__797309D9" FromRole="reclamation" ToRole="Client" />
+        </EntityType>
+        <Association Name="FK__reclamati__idCha__7A672E12">
+          <End Type="fermetures_solutionsModel.Chantier" Role="Chantier" Multiplicity="0..1" />
+          <End Type="fermetures_solutionsModel.reclamation" Role="reclamation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chantier">
+              <PropertyRef Name="IdChantier" />
+            </Principal>
+            <Dependent Role="reclamation">
+              <PropertyRef Name="idChantier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__reclamati__idCli__797309D9">
+          <End Type="fermetures_solutionsModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="fermetures_solutionsModel.reclamation" Role="reclamation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="idClient" />
+            </Principal>
+            <Dependent Role="reclamation">
+              <PropertyRef Name="idClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fermetures_solutionsModelStoreContainer" CdmEntityContainer="fermeturesSolutionsEntities">
+          <EntitySetMapping Name="Chantiers">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.Chantier">
+              <MappingFragment StoreEntitySet="Chantier">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdChantier" ColumnName="IdChantier" />
+                <ScalarProperty Name="NomChantier" ColumnName="NomChantier" />
+                <ScalarProperty Name="AdresseChantier" ColumnName="AdresseChantier" />
+                <ScalarProperty Name="DateDebChantier" ColumnName="DateDebChantier" />
+                <ScalarProperty Name="DateFinProj" ColumnName="DateFinProj" />
+                <ScalarProperty Name="statut" ColumnName="statut" />
+                <ScalarProperty Name="ChefProj" ColumnName="ChefProj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Congees">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.Congee">
+              <MappingFragment StoreEntitySet="Congee">
+                <ScalarProperty Name="IdConge" ColumnName="IdConge" />
+                <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DemangdeAugS">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.DemangdeAug">
+              <MappingFragment StoreEntitySet="DemangdeAugS">
+                <ScalarProperty Name="IdDemande" ColumnName="IdDemande" />
+                <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+                <ScalarProperty Name="etat" ColumnName="etat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Depatements">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.Depatement">
+              <MappingFragment StoreEntitySet="Depatement">
+                <ScalarProperty Name="idDepartement" ColumnName="idDepartement" />
+                <ScalarProperty Name="nomDepartement" ColumnName="nomDepartement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeTables">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.EmployeeTable">
+              <MappingFragment StoreEntitySet="EmployeeTable">
+                <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+                <ScalarProperty Name="PrenomEmp" ColumnName="PrenomEmp" />
+                <ScalarProperty Name="NomEmp" ColumnName="NomEmp" />
+                <ScalarProperty Name="MailEmp" ColumnName="MailEmp" />
+                <ScalarProperty Name="TelEmp" ColumnName="TelEmp" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateNEmp" ColumnName="DateNEmp" />
+                <ScalarProperty Name="SexeEmp" ColumnName="SexeEmp" />
+                <ScalarProperty Name="DateRecEmp" ColumnName="DateRecEmp" />
+                <ScalarProperty Name="idDepartement" ColumnName="idDepartement" />
+                <ScalarProperty Name="PosteEmp" ColumnName="PosteEmp" />
+                <ScalarProperty Name="SalaireEmp" ColumnName="SalaireEmp" />
+                <ScalarProperty Name="pointsEmp" ColumnName="pointsEmp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="TelCLient" ColumnName="TelCLient" />
+                <ScalarProperty Name="AdresseClient" ColumnName="AdresseClient" />
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reclamations">
+            <EntityTypeMapping TypeName="fermetures_solutionsModel.reclamation">
+              <MappingFragment StoreEntitySet="reclamation">
+                <ScalarProperty Name="Remarque" ColumnName="Remarque" />
+                <ScalarProperty Name="dateRec" ColumnName="dateRec" />
+                <ScalarProperty Name="idChantier" ColumnName="idChantier" />
+                <ScalarProperty Name="idClient" ColumnName="idClient" />
+                <ScalarProperty Name="idReclamation" ColumnName="idReclamation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

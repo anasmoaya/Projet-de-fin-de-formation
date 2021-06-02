@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.Client>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseClient)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelCLient)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdresseClient)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelCLient)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idClient }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idClient }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idClient })
+        </td>
+    </tr>
+}
+
+</table>

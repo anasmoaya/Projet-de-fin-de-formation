@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e66895f821f4bc691c973a979305080" Name="Diagram1">
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Chantier" Width="1.5" PointX="8.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Congee" Width="1.5" PointX="10.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.DemangdeAug" Width="1.5" PointX="2.125" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Depatement" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.EmployeeTable" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.UserTable" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__ChefPr__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__Congee__IdEmp__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__DemangdeA__IdEmp__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__EmployeeT__idDep__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__UserTable__IdEmp__4AB81AF0" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Client" Width="1.5" PointX="12.5" PointY="0.5" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__IdClie__76969D2E" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.reclamation" Width="1.5" PointX="13.75" PointY="5" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCha__7A672E12" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCli__797309D9" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

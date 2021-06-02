@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.Depatement>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h2>Liste des départements</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            <label for="nomDepartement" >Departement:</label>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomDepartement)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.idDepartement }) |
+
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.idDepartement })
+        </td>
+    </tr>
+}
+
+</table>

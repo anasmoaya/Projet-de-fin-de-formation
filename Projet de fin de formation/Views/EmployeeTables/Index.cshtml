@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.EmployeeTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h2>Ajouter Un Employé</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un Employé", "Create")
+</p>
+<table class="table table-striped ">
+    <tr>
+        <th>
+            <label for="PrenomEmp">Prenom</label>
+
+        </th>
+        <th>
+            <label for="NomEmp">Nom</label>
+
+            
+        </th>
+        <th>
+            <label for="MailEmp">Email</label>
+
+        </th>
+        <th>
+            <label for="TelEmp">Telephone</label>
+
+        </th>
+        <th>
+            <label for="Adresse">Adresse</label>
+
+        </th>
+        <th>
+            <label for="DateNEmp">Date de Naissance:</label>
+        </th>
+        <th>
+            <label for="SexeEmp">Sexe</label>
+
+        </th>
+        <th>
+            <label for="DateRecEmp">Date de Recrutement:</label>
+        </th>
+        <th>
+            <label for="PosteEmp">Poste</label>
+        </th>
+        <th>
+            <label for="SalaireEmp">Salaire:</label>
+        </th>
+        <th>
+            <label for="pointsEmp">Points:</label>
+        </th>
+        <th>
+            <label for="Depatement.nomDepartement">Département:</label>
+
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrenomEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SexeEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PosteEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaireEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pointsEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Depatement.nomDepartement)
+        </td>
+        <td>
+          
+            <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit",new { id=item.IdEmp })'">Modifier</button>
+
+            <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.IdEmp })'">Supprimer</button>
+
+
+        </td>
+    </tr>
+}
+
+</table>

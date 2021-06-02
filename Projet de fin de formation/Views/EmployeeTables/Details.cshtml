@@ -1,0 +1,115 @@
+﻿@model Projet_de_fin_de_formation.EmployeeTable
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployeeTable</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrenomEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrenomEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateNEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateNEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SexeEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexeEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRecEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRecEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PosteEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PosteEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaireEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaireEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pointsEmp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pointsEmp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Depatement.nomDepartement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depatement.nomDepartement)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdEmp }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

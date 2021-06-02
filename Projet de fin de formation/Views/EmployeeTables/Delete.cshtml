@@ -1,0 +1,115 @@
+﻿@model Projet_de_fin_de_formation.EmployeeTable
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+
+<h3>Est ce que vous voulez vraiment supprimer cet employé?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label for="PrenomEmp">Prenom</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrenomEmp)
+        </dd>
+
+        <dt>
+            <label for="NomEmp">Nom</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomEmp)
+        </dd>
+
+        <dt>
+            <label for="MailEmp">Email</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailEmp)
+        </dd>
+
+        <dt>
+            <label for="TelEmp">Telephone</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelEmp)
+        </dd>
+
+        <dt>
+            <label for="Adresse">Adresse</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            <label for="DateNEmp">Date de Naissance:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateNEmp)
+        </dd>
+
+        <dt>
+            <label for="SexeEmp">Sexe</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SexeEmp)
+        </dd>
+
+        <dt>
+            <label for="DateRecEmp">Date de Recrutement:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRecEmp)
+        </dd>
+
+        <dt>
+            <label for="PosteEmp">Poste</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PosteEmp)
+        </dd>
+
+        <dt>
+            <label for="SalaireEmp">Salaire:</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaireEmp)
+        </dd>
+
+        
+
+        <dt>
+            <label for="Depatement.nomDepartement">Département:</label>
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Depatement.nomDepartement)
+
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("Liste des employés", "Index")
+        </div>
+    }
+</div>

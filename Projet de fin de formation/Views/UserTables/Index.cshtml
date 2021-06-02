@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.UserTable>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Pseudo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Pseudo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Pseudo })
+        </td>
+    </tr>
+}
+
+</table>
