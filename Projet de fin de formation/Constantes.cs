@@ -11,6 +11,6 @@ namespace Projet_de_fin_de_formation
         public static bool isAdmin;
         public static string typeLogin;
         public static UserTable user;
-        internal static UserClient useClientObject;
+        public static UserClient useClientObject;
     }
 }

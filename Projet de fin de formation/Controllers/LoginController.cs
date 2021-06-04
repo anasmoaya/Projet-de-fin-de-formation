@@ -15,6 +15,13 @@ namespace Projet_de_fin_de_formation.Controllers
         // GET: Login
 
 
+
+        public ActionResult Error()
+        {
+            Response.StatusCode = 404;
+            return View();
+        }
+
         public ActionResult Login()
         {
 

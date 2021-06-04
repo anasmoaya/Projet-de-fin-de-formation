@@ -1,4 +1,12 @@
-﻿
+﻿@{
+    if (!(Constantes.useClientObject != null))
+    {
+        Response.Redirect("~/Login/Error");
+
+
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,13 +105,13 @@
                         <li class="nav-item">
                             <a href="@Url.Action("IndexFiltred","reclamations")" class="nav-link">
                                 <p>
-                                   Réclamations
+                                    Réclamations
                                     <span class="badge badge-info right"></span>
                                 </p>
                             </a>
-                     
+
                         </li>
-                       
+
 
                     </ul>
                 </nav>

@@ -12,14 +12,7 @@
     
     <div class="form-horizontal">
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-           <label>Id de Chantier</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IdChantier, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.IdChantier, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <label>Nom</label>

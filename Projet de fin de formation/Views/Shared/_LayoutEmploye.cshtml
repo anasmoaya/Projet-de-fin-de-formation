@@ -1,4 +1,9 @@
-﻿
+﻿  @{  if(!(Constantes.user!=null && !Constantes.isAdmin))
+    {
+        Response.Redirect("~/Login/Error");
+          
+     }
+      }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,11 +87,11 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
                         <li class="nav-header">Opérations</li>
                         <li class="nav-item">
-                          
+
                             <a href="@Url.Action("IndexEmploye","EmployeeTables",Constantes.user)" class="nav-link">
 
                                 <p>
@@ -103,18 +108,19 @@
                                     <span class="badge badge-info right"></span>
                                 </p>
                             </a>
-                        </li><li class="nav-item">
-                        
+                        </li>
+                        <li class="nav-item">
 
-                       
-                    <a href="@Url.Action("IndexFiltred","DemangdeAugs")" class="nav-link">
 
-        <p>
-            Demande de Augementation de salaire
-            <span class="badge badge-info right"></span>
-        </p>
-    </a>
-</li>
+
+                            <a href="@Url.Action("IndexFiltred","DemangdeAugs")" class="nav-link">
+
+                                <p>
+                                    Demande de Augementation de salaire
+                                    <span class="badge badge-info right"></span>
+                                </p>
+                            </a>
+                        </li>
 
 
                     </ul>

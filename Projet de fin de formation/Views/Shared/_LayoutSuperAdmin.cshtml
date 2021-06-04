@@ -1,4 +1,11 @@
-﻿
+﻿@{ 
+    if(!(Constantes.user!=null && Constantes.isAdmin))
+    {
+        Response.Redirect("~/Login/Error");
+
+
+    }
+}
     
     <!DOCTYPE html>
     <html lang="en">

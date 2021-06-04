@@ -632,6 +632,8 @@
     </Content>
     <Content Include="flavicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="FrontEnd\404\css\style.css" />
+    <Content Include="FrontEnd\404\images\bg.jpg" />
     <Content Include="FrontEnd\build\config\postcss.config.js" />
     <Content Include="FrontEnd\build\config\rollup.config.js" />
     <Content Include="FrontEnd\build\js\AdminLTE.js" />
@@ -2811,6 +2813,8 @@
     <Content Include="Views\Chantiers\IndexFiltred.cshtml" />
     <Content Include="Views\UserTables\IndexFiltred.cshtml" />
     <Content Include="Views\reclamations\IndexFiltred.cshtml" />
+    <Content Include="Views\Introuvable.cshtml" />
+    <Content Include="Views\Login\Error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
