@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Supprimer un chantier</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Voulez vous vraiment supprimer ce chantier</h3>
 <div>
     <h4>Chantier</h4>
     <hr />
@@ -20,53 +20,7 @@
             @Html.DisplayFor(model => model.NomChantier)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdresseChantier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdresseChantier)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDebChantier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateDebChantier)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateFinProj)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateFinProj)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.statut)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.statut)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeTable.PrenomEmp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.NomClient)
-        </dd>
+   
 
     </dl>
 
@@ -74,8 +28,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("liste des chantiers", "Index")
         </div>
     }
 </div>

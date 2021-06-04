@@ -11,16 +11,13 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Congee
     {
-        [Key]
-
-        public int IdConge { get; set; }
+        public int idConge { get; set; }
         public string IdEmp { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
         public string Reason { get; set; }
         public string Status { get; set; }
     

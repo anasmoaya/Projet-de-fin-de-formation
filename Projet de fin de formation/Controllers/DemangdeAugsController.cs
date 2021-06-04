@@ -12,7 +12,18 @@ namespace Projet_de_fin_de_formation.Controllers
 {
     public class DemangdeAugsController : Controller
     {
-        private fermeturesSolutionsEntities db = new fermeturesSolutionsEntities();
+         public fermeturesSolutionsEntities db = new fermeturesSolutionsEntities();
+
+
+
+
+      public ActionResult IndexFiltred()
+        {
+            EmployeeTable emp = db.EmployeeTables.Find(Constantes.IdUtilisateurEmploy);
+            return View(db.DemangdeAugS.Where(m=>m.IdEmp == Constantes.IdUtilisateurEmploy));
+        }
+
+
 
         // GET: DemangdeAugs
         public ActionResult Index()
@@ -39,7 +50,26 @@ namespace Projet_de_fin_de_formation.Controllers
         // GET: DemangdeAugs/Create
         public ActionResult Create()
         {
-            ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp");
+
+
+            EmployeeTable em = db.EmployeeTables.Find(Constantes.IdUtilisateurEmploy);
+            if(em != null)
+            {
+                if (em.pointsEmp < 99) return RedirectToAction("NotAllowed");
+                else
+                {
+                    ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp");
+                    return View();
+                }
+            }
+            return View();
+
+
+
+
+        }
+        public ActionResult NotAllowed()
+        {
             return View();
         }
 
@@ -48,17 +78,47 @@ namespace Projet_de_fin_de_formation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdDemande,IdEmp,etat")] DemangdeAug demangdeAug)
+        public ActionResult Create( DemangdeAug demangdeAug)
         {
-            if (ModelState.IsValid)
+            DemangdeAug demande = db.DemangdeAugS.Where(m => m.IdEmp == Constantes.user.IdEmp).FirstOrDefault();
+
+            if (demande != null)
             {
-                db.DemangdeAugS.Add(demangdeAug);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (demande.etat == "En cours") return View("~/Views/DemangdeAugs/DemandeDejaEnvoye.cshtml");
+                else {
+                    demangdeAug.IdEmp = Constantes.IdUtilisateurEmploy;
+                    demangdeAug.etat = "En cours";
+                    if (ModelState.IsValid)
+                    {
+                        db.DemangdeAugS.Add(demangdeAug);
+                        db.SaveChanges();
+                        return RedirectToAction("IndexFiltred");
+                    }
+
+                    ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", demangdeAug.IdEmp);
+                    return RedirectToAction("IndexFiltred");
+
+                }
+            }
+            else
+            {
+                demangdeAug.IdEmp = Constantes.IdUtilisateurEmploy;
+                demangdeAug.etat = "En cours";
+                if (ModelState.IsValid)
+                {
+                    db.DemangdeAugS.Add(demangdeAug);
+                    db.SaveChanges();
+                    return RedirectToAction("IndexFiltred");
+                }
+
+                ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", demangdeAug.IdEmp);
+                return RedirectToAction("IndexFiltred");
             }
 
-            ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", demangdeAug.IdEmp);
-            return View(demangdeAug);
+
+             
+           
+           
         }
 
         // GET: DemangdeAugs/Edit/5
@@ -76,6 +136,31 @@ namespace Projet_de_fin_de_formation.Controllers
             ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", demangdeAug.IdEmp);
             return View(demangdeAug);
         }
+      
+        [HttpPost]
+        public ActionResult Augementer(DemangdeAug demande )
+        {
+                DemangdeAug de = db.DemangdeAugS.Find(demande.idDemande);
+                de.etat = "Approuvé";
+                EmployeeTable emp = db.EmployeeTables.Find(demande.IdEmp);
+                emp.SalaireEmp += demande.MontantAug.GetValueOrDefault();
+                db.SaveChanges();
+       
+            
+          
+            return RedirectToAction("Index", "EmployeeTables");
+        }
+        [HttpPost]
+        public ActionResult Refuser(DemangdeAug demande)
+        {
+            DemangdeAug de = db.DemangdeAugS.Find(demande.idDemande);
+            de.etat = "Refusé";
+            db.SaveChanges();
+
+
+
+            return RedirectToAction("Index", "EmployeeTables");
+        }
 
         // POST: DemangdeAugs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -89,6 +174,7 @@ namespace Projet_de_fin_de_formation.Controllers
                 db.Entry(demangdeAug).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+               
             }
             ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", demangdeAug.IdEmp);
             return View(demangdeAug);
@@ -128,5 +214,15 @@ namespace Projet_de_fin_de_formation.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult Refuser(int id)
+        {
+            DemangdeAug de = db.DemangdeAugS.Find(id);
+            de.etat = "Refusé";
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

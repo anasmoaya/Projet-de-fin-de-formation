@@ -5,66 +5,89 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Liste des Chantiers</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter un chantier", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NomChantier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdresseChantier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateDebChantier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateFinProj)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.statut)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </th>
-        <th></th>
-    </tr>
+            <label for="NomChantier">Nom de Chantier</label>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomChantier)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdresseChantier)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateDebChantier)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateFinProj)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.statut)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.NomClient)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdChantier }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdChantier }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdChantier })
-        </td>
+        </th>
+        <th>
+            <label for="AdresseChantier">Adresse Chantier</label>
+
+        </th>
+        <th>
+            <label for="DateDebChantier">Date de début</label>
+
+        </th>
+        <th>
+            <label for="DateFinProj">Date de fin </label>
+
+        </th>
+        <th>
+            <label for="statut">Statut</label>
+
+        </th>
+        <th>
+            <label for="EmployeeTable.PrenomEmp">Chef de projet</label>
+
+        </th>
+        <th>
+            <label for="Client.NomCLient">Client</label>
+        </th>
+        <th>Actions</th>
     </tr>
-}
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomChantier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresseChantier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDebChantier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateFinProj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.statut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.NomClient)
+            </td>
+            <td>
+
+                <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit", new { id = item.IdChantier })'">Modifier</button>
+
+                <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", new { id = item.IdChantier })'">Supprimer</button>
+                @if (item.statut == "En cours")
+                {
+                    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.IdChantier })'">
+                        Terminer
+                    </button>
+                }
+
+                
+            </td>
+        </tr>
+
+
+
+
+    }
 
 </table>
+
+
+

@@ -11,8 +11,7 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +19,9 @@ namespace Projet_de_fin_de_formation
         {
             this.Chantiers = new HashSet<Chantier>();
             this.reclamations = new HashSet<reclamation>();
+            this.UserClients = new HashSet<UserClient>();
         }
-
-        [Key]
-
+    
         public int idClient { get; set; }
         public string NomClient { get; set; }
         public string AdresseClient { get; set; }
@@ -33,5 +31,7 @@ namespace Projet_de_fin_de_formation
         public virtual ICollection<Chantier> Chantiers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<reclamation> reclamations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserClient> UserClients { get; set; }
     }
 }

@@ -561,9 +561,11 @@
     <Compile Include="Congee.cs">
       <DependentUpon>FermeturesSolutions.tt</DependentUpon>
     </Compile>
+    <Compile Include="Constantes.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ChantiersController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Controllers\CongeesController.cs" />
     <Compile Include="Controllers\DemangdeAugsController.cs" />
     <Compile Include="Controllers\DepatementsController.cs" />
@@ -598,6 +600,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="keyAttribute.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\EmployeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -605,6 +608,9 @@
       <DependentUpon>FermeturesSolutions.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserClient.cs">
+      <DependentUpon>FermeturesSolutions.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserTable.cs">
       <DependentUpon>FermeturesSolutions.tt</DependentUpon>
     </Compile>
@@ -614,7 +620,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="FermeturesSolutions.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FermeturesSolutions.edmx</DependentUpon>
@@ -625,6 +630,7 @@
       <DependentUpon>FermeturesSolutions.edmx</DependentUpon>
       <LastGenOutput>FermeturesSolutions.cs</LastGenOutput>
     </Content>
+    <Content Include="flavicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="FrontEnd\build\config\postcss.config.js" />
     <Content Include="FrontEnd\build\config\rollup.config.js" />
@@ -2735,6 +2741,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\site.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2745,12 +2752,11 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutClient.cshtml" />
     <Content Include="Views\Shared\EmptyLayout.cshtml" />
     <Content Include="Views\Shared\_LayoutEmploye.cshtml" />
     <Content Include="Views\Shared\_LayoutSuperAdmin.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\Login\Dashboard.cshtml" />
     <Content Include="Views\EmployeeTables\Create.cshtml" />
     <Content Include="Views\EmployeeTables\Delete.cshtml" />
     <Content Include="Views\EmployeeTables\Details.cshtml" />
@@ -2791,6 +2797,20 @@
     <Content Include="Views\Clients\Details.cshtml" />
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
+    <Content Include="Views\EmployeeTables\IndexEmploye.cshtml" />
+    <Content Include="Views\EmployeeTables\EditEmploye.cshtml" />
+    <Content Include="Views\DemangdeAugs\IndexFiltred.cshtml" />
+    <Content Include="Views\DemangdeAugs\NotAllowed.cshtml" />
+    <Content Include="Views\Congees\IndexFiltred.cshtml" />
+    <Content Include="Views\LAndingView.cshtml" />
+    <Content Include="Views\ClientUser\Index.cshtml" />
+    <Content Include="Views\ClientUser\ChantiersFiltred.cshtml" />
+    <Content Include="Views\ClientUser\Verifier.cshtml" />
+    <Content Include="Views\DemangdeAugs\DemandeDejaEnvoye.cshtml" />
+    <Content Include="Views\Congees\DemandeEncours.cshtml" />
+    <Content Include="Views\Chantiers\IndexFiltred.cshtml" />
+    <Content Include="Views\UserTables\IndexFiltred.cshtml" />
+    <Content Include="Views\reclamations\IndexFiltred.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

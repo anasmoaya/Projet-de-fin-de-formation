@@ -86,24 +86,28 @@
 
                         <li class="nav-header">Opérations</li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                          
+                            <a href="@Url.Action("IndexEmploye","EmployeeTables",Constantes.user)" class="nav-link">
 
                                 <p>
-                                    Mes Details
+                                    Mes informations
                                     <span class="badge badge-info right"></span>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="@Url.Action("IndexFiltred","Congees")" class="nav-link">
 
                                 <p>
-                                    DEmande de congé
+                                    Demande de congé
                                     <span class="badge badge-info right"></span>
                                 </p>
                             </a>
                         </li><li class="nav-item">
-    <a href="" class="nav-link">
+                        
+
+                       
+                    <a href="@Url.Action("IndexFiltred","DemangdeAugs")" class="nav-link">
 
         <p>
             Demande de Augementation de salaire
@@ -127,12 +131,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Deconnexion","UserTables",new {id=Constantes.IdUtilisateurEmploy })">Déconnexion</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->

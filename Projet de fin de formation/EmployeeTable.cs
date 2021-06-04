@@ -11,21 +11,18 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class EmployeeTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EmployeeTable()
         {
-            this.Chantiers = new HashSet<Chantier>();
             this.Congees = new HashSet<Congee>();
             this.DemangdeAugS = new HashSet<DemangdeAug>();
             this.UserTables = new HashSet<UserTable>();
+            this.Chantiers = new HashSet<Chantier>();
         }
-
-        [Key]
-
+    
         public string IdEmp { get; set; }
         public string PrenomEmp { get; set; }
         public string NomEmp { get; set; }
@@ -41,13 +38,13 @@ namespace Projet_de_fin_de_formation
         public int pointsEmp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Chantier> Chantiers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Congee> Congees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DemangdeAug> DemangdeAugS { get; set; }
         public virtual Depatement Depatement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserTable> UserTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Chantier> Chantiers { get; set; }
     }
 }

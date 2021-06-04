@@ -5,47 +5,41 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Réclamation de la part de @Html.DisplayFor(model => model.Client.NomClient) </h2>
 
 <div>
-    <h4>reclamation</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.dateRec)
-        </dt>
+    <table class="table">
+        <tr>
+            <th>
+                <label nom="Client.NomClient">Client</label>
+            </th>
+            <th>
+                <label nom="CHantier.NomChantier">Chantier</label>
+            </th>
+            <th>
+                <label nom="Remarque">Remarque</label>
+            </th>
+            <th>
+                <label for="Chantier.ChefProj">Chef de chantier</label>
+            </th>
+        </tr>
+        <tr>
+            <td>                
+                @Html.DisplayFor(model => model.Client.NomClient)
+            </td>
+            <td>@Html.DisplayFor(model=>model.Chantier.NomChantier)</td>
+            <td>
+                @Html.DisplayFor(model => model.Remarque)
+            </td>
+            <td>
+                @Html.DisplayFor(model=>model.Chantier.ChefProj)
+            </td>
+        </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.dateRec)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Remarque)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Remarque)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Chantier.NomChantier)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Chantier.NomChantier)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.NomClient)
-        </dd>
-
-    </dl>
+    </table>
+   
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idReclamation }) |
-    @Html.ActionLink("Back to List", "Index")
+<p> |
+    @Html.ActionLink("Liste des reclamations", "Index")
 </p>

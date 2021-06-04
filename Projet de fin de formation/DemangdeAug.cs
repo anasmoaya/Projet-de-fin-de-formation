@@ -11,15 +11,14 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class DemangdeAug
     {
-        [Key]
-
-        public int IdDemande { get; set; }
+        public int idDemande { get; set; }
         public string IdEmp { get; set; }
-        public Nullable<bool> etat { get; set; }
+        public string etat { get; set; }
+        public Nullable<decimal> MontantAug { get; set; }
+        public Nullable<System.DateTime> DateDemande { get; set; }
     
         public virtual EmployeeTable EmployeeTable { get; set; }
     }

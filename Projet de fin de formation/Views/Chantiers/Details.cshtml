@@ -5,71 +5,73 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Terminer un chantier</h2>
 
 <div>
-    <h4>Chantier</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomChantier)
-        </dt>
+    <table class="table">
+        <tr>
+            <th><label>Nom de chantier</label></th>
+            <th><label>Client</label></th>
+            <th><label>Adresse</label></th>
+            <th><label>Chef de chantier</label></th>
+            <th><label>Date de début</label></th>
+            <th></th>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomChantier)
-        </dd>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.NomChantier)</td>
+            <td>@Html.DisplayFor(model => model.Client.NomClient)</td>
+            <td>@Html.DisplayFor(model => model.AdresseChantier)</td>
+            <td>@Html.DisplayFor(model => model.EmployeeTable.NomEmp)</td>
+            <td>@Html.DisplayFor(model => model.DateDebChantier)</td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Terminer", new { id = Model.IdChantier })'">Terminer</button>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AdresseChantier)
-        </dt>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                    Terminer avec recompense
+                </button>
+                <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("Index")'">Annuler</button>
 
-        <dd>
-            @Html.DisplayFor(model => model.AdresseChantier)
-        </dd>
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateDebChantier)
-        </dt>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateDebChantier)
-        </dd>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" action="@Url.Action("Recompenser",Model)">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateFinProj)
-        </dt>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Recompenser le chef de chantier</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Montant d'augementation</label>
+                            <div class="col-md-10">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.pointsA, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.pointsA, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateFinProj)
-        </dd>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Augementer</button>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.statut)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.statut)
-        </dd>
+                </div>
+            </div>
+        </form>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeTable.PrenomEmp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Client.NomClient)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdChantier }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

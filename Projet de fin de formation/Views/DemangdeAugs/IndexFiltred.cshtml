@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.DemangdeAug>
+
+@{
+    ViewBag.Title = "IndexFiltred";
+    Layout = "~/Views/Shared/_LayoutEmploye.cshtml";
+}
+
+
+     
+    <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("Create")'">Demander une augementation</button>
+
+
+<h2>Mes demandes: </h2>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.DateDemande)</th>
+        <th>
+            @Html.DisplayNameFor(model => model.etat)
+        </th>
+        <th>
+
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.DateDemande)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.etat)
+            </td>
+            <td>
+                @if (item.etat == "En cours")
+                {
+                    <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.idDemande })'">Annuler</button>
+
+                }
+            </td>
+        </tr>
+    }
+
+</table>

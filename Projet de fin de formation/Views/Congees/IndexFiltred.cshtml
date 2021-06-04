@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.Congee>
+
+@{
+    ViewBag.Title = "IndexFiltred";
+    Layout = "~/Views/Shared/_LayoutEmploye.cshtml";
+}
+<p>
+    <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create")'">Demander un congé</button>
+
+</p>
+<h2>Mes demandes de congée</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+
+</table>

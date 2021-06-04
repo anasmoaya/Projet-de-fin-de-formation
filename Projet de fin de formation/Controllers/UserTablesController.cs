@@ -120,6 +120,48 @@ namespace Projet_de_fin_de_formation.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult Verifier(UserTable user)
+        {
+            UserTable utilisateur = db.UserTables.Where(m => (m.password == user.password && m.Pseudo == user.Pseudo)).FirstOrDefault();
+
+
+
+
+            if (utilisateur != null)
+            {
+                Session["TypedeLogin"] = "Employé";
+                Session["IdEmploye"] = utilisateur.IdEmp;
+                Session["Admin"] = utilisateur.Admin;
+                List<DemangdeAug> demande_salaire = db.DemangdeAugS.Where(m => m.IdEmp == utilisateur.IdEmp).ToList();
+                Constantes.IdUtilisateurEmploy = utilisateur.IdEmp;
+                Constantes.isAdmin= utilisateur.Admin;
+                Constantes.typeLogin = "Employe";
+                Constantes.user = utilisateur;
+                if (utilisateur.Admin)
+                    return RedirectToAction("Index", "EmployeeTables");
+                else
+                    return RedirectToAction("IndexEmploye", "EmployeeTables",utilisateur);
+            }
+            else
+            {
+               // user.LoginErrorMessage = "Mot de passe ou nom d'utilisateur icorrectes";
+                return RedirectToAction("Login", "Login");
+
+
+            }
+
+
+        }
+       
+        
+        public ActionResult Deconnexion()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Login");
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

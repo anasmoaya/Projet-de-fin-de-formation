@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Projet_de_fin_de_formation.Chantier>
+
+@{
+    ViewBag.Title = "Verifier";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<h2>Verifier</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomChantier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseChantier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDebChantier)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFinProj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.statut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pointsA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client.NomClient)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomChantier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdresseChantier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDebChantier)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFinProj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.statut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pointsA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.NomClient)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdChantier }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdChantier }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdChantier })
+        </td>
+    </tr>
+}
+
+</table>

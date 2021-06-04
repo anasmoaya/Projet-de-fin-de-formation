@@ -26,12 +26,13 @@ namespace Projet_de_fin_de_formation
         }
     
         public virtual DbSet<Chantier> Chantiers { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Congee> Congees { get; set; }
         public virtual DbSet<DemangdeAug> DemangdeAugS { get; set; }
         public virtual DbSet<Depatement> Depatements { get; set; }
         public virtual DbSet<EmployeeTable> EmployeeTables { get; set; }
-        public virtual DbSet<UserTable> UserTables { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<reclamation> reclamations { get; set; }
+        public virtual DbSet<UserClient> UserClients { get; set; }
+        public virtual DbSet<UserTable> UserTables { get; set; }
     }
 }

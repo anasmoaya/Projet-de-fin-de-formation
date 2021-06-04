@@ -1,0 +1,71 @@
+﻿@model Projet_de_fin_de_formation.UserClient
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/EmptyLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Connecter : Fermetures Solutions</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+
+
+</head>
+
+
+<body>
+    <!-- form section start -->
+    <section class="w3l-hotair-form">
+        <h1>Fermetures Solutions</h1>
+
+
+        <div class="container">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-hotair">
+                    <div class="content-wthree">
+                        <div style="text-align:center">
+                            <img src="~/FrontEnd/dist/img/AdminLTELogo.png" class="img-circle " />
+                        </div>
+                        <h2>
+                            Se Connecter
+                        </h2>
+                        @using (Html.BeginForm("Verifier", "ClientUser", FormMethod.Post))
+                        {
+
+                            @Html.EditorFor(model => model.pseudo, new { htmlAttributes = new { @class = "form-control", placeholder = "Nom d'utilisateur" } })
+                            @Html.ValidationMessageFor(model => model.pseudo, "", new { @class = "text-danger" })
+
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", placeholder = "Mot de passe" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+
+                            <button class="btn" type="submit">Se Connecter</button>
+                            @*@Html.DisplayFor(model=>model.LoginErrorMessage, new { @class = "text-danger" })*@
+                        }
+                    </div>
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="~/FrontEnd/Login/images/1.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //form -->
+        </div>
+        <!-- copyright-->
+        <div class="copyright text-center">
+            <p class="copy-footer-29">
+                © 2021 Fermetures Solutions
+            </p>
+        </div>
+
+        <!-- //copyright-->
+    </section>
+    <!-- //form section start -->
+</body>
+</html>
+

@@ -5,18 +5,16 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Create</h2>
-
+<h2>Ajouter un projet</h2>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Chantier</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.IdChantier, htmlAttributes: new { @class = "control-label col-md-2" })
+           <label>Id de Chantier</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.IdChantier, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.IdChantier, "", new { @class = "text-danger" })
@@ -24,7 +22,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NomChantier, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Nom</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NomChantier, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NomChantier, "", new { @class = "text-danger" })
@@ -32,7 +30,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AdresseChantier, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Adresse</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AdresseChantier, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AdresseChantier, "", new { @class = "text-danger" })
@@ -40,7 +38,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateDebChantier, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Date de début de chantier</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateDebChantier, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateDebChantier, "", new { @class = "text-danger" })
@@ -48,7 +46,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateFinProj, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Date fin du chantier</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DateFinProj, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DateFinProj, "", new { @class = "text-danger" })
@@ -56,7 +54,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.statut, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Statut</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.statut, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.statut, "", new { @class = "text-danger" })
@@ -64,15 +62,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ChefProj, "ChefProj", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Chef de chantier</label>
             <div class="col-md-10">
-                @Html.DropDownList("ChefProj", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ChefProj, "", new { @class = "text-danger" })
-            </div>
+
+                    @Html.DropDownList("ChefProj", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChefProj, "", new { @class = "text-danger" })
+             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdClient, "IdClient", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Client</label>
             <div class="col-md-10">
                 @Html.DropDownList("IdClient", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdClient, "", new { @class = "text-danger" })
@@ -81,12 +80,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Ajouter" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Liste de chantiers", "Index")
 </div>

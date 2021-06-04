@@ -8,28 +8,74 @@
 <h2>Details</h2>
 
 <div>
-    <h4>DemangdeAug</h4>
+    <h4>Demande d'augementation de salaire</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.etat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.etat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmployeeTable.PrenomEmp)
-        </dd>
-
-    </dl>
+    <table class="table">
+        <tr>
+            <th>Employé</th>
+            <th>Date de Recrutement</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <td>@Html.DisplayFor(model => model.EmployeeTable.NomEmp) @Html.DisplayFor(model => model.EmployeeTable.PrenomEmp)</td>
+            <td>@Html.DisplayFor(model=>model.EmployeeTable.DateRecEmp)</td>
+            <td>@Html.DisplayFor(model=>model.EmployeeTable.pointsEmp)</td>
+        </tr>
+            
+        
+    </table>
+    
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdDemande }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Model.etat == "En cours")
+    {
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Accepter
+        </button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Refuser",new { id=Model.idDemande })'">Refusé</button>
+        
+    }
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form method="post" action="@Url.Action("Augementer",Model)">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Augementer le salaire</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Montant d'augementation</label>
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.IdEmp)
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.MontantAug, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.MontantAug, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Augementer</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+
+
+
+
+
+    @Html.ActionLink("Liste des demandes D'augementation de salaire ", "Index")
 </p>

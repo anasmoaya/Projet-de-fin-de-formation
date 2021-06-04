@@ -5,21 +5,22 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Liste des Clients</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter un client", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NomClient)
+            <label for="NomClient">Nom</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AdresseClient)
+            <label for="AdresseClient">Adresse</label>
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TelCLient)
+            <label for="TelClient">Telephone</label>
         </th>
         <th></th>
     </tr>
@@ -36,9 +37,10 @@
             @Html.DisplayFor(modelItem => item.TelCLient)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idClient }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idClient }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idClient })
+
+            <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit",new { id=item.idClient })'">Modifier</button>
+
+            <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.idClient })'">Supprimer</button>
         </td>
     </tr>
 }

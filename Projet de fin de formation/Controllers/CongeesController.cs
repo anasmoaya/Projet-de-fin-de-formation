@@ -48,17 +48,47 @@ namespace Projet_de_fin_de_formation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdConge,IdEmp,StartDate,EndDate,Reason,Status")] Congee congee)
+        public ActionResult Create([Bind(Include = "StartDate,EndDate,Reason")] Congee congee)
         {
-            if (ModelState.IsValid)
+            Congee cg = db.Congees.Where(m => m.IdEmp == Constantes.user.IdEmp).FirstOrDefault();
+            if (cg!=null)
             {
-                db.Congees.Add(congee);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (cg.Status == "En cours") return View("~/Views/DemangdeAugs/DemandeDejaEnvoye.cshtml");
+                else
+                {
+
+                    if (ModelState.IsValid)
+                    {
+
+                        congee.IdEmp = Constantes.IdUtilisateurEmploy;
+                        congee.Status = "En cours";
+                        db.Congees.Add(congee);
+                        db.SaveChanges();
+                        return RedirectToAction("IndexFiltred");
+                    }
+
+                    ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", congee.IdEmp);
+                    return View(congee);
+                }
+                
+            }
+            else
+            {
+
+                if (ModelState.IsValid)
+                {
+
+                    congee.IdEmp = Constantes.IdUtilisateurEmploy;
+                    congee.Status = "En cours";
+                    db.Congees.Add(congee);
+                    db.SaveChanges();
+                    return RedirectToAction("IndexFiltred");
+                }
+
+                ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", congee.IdEmp);
+                return View(congee);
             }
 
-            ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", congee.IdEmp);
-            return View(congee);
         }
 
         // GET: Congees/Edit/5
@@ -82,7 +112,7 @@ namespace Projet_de_fin_de_formation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdConge,IdEmp,StartDate,EndDate,Reason,Status")] Congee congee)
+        public ActionResult Edit([Bind(Include = "idConge,IdEmp,StartDate,EndDate,Reason,Status")] Congee congee)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +122,15 @@ namespace Projet_de_fin_de_formation.Controllers
             }
             ViewBag.IdEmp = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", congee.IdEmp);
             return View(congee);
+        }
+        
+        public ActionResult Approuver(int id )
+        {
+            Congee congee = db.Congees.Find(id);
+            congee.Status = "Approuvé";
+            db.SaveChanges();
+            return RedirectToAction("Index");
+       
         }
 
         // GET: Congees/Delete/5
@@ -127,6 +166,15 @@ namespace Projet_de_fin_de_formation.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult IndexFiltred()
+        {
+            List<Congee> Liste_Congees = db.Congees.Where(m => m.IdEmp == Constantes.user.IdEmp).ToList();
+            if (Liste_Congees == null)
+            {
+                return HttpNotFound();
+            }else 
+            return View(Liste_Congees);
         }
     }
 }

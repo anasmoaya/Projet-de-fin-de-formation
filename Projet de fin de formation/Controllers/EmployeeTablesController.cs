@@ -109,6 +109,14 @@ namespace Projet_de_fin_de_formation.Controllers
             return View(employeeTable);
         }
 
+
+        public ActionResult IndexEmploye(UserTable user)
+        {
+            EmployeeTable emp = db.EmployeeTables.Find(user.IdEmp);
+            return View(emp);
+        }
+            
+
         // POST: EmployeeTables/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -119,6 +127,45 @@ namespace Projet_de_fin_de_formation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
+
+        public ActionResult EditEmploye(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EmployeeTable employeeTable = db.EmployeeTables.Find(id);
+            if (employeeTable == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.idDepartement = new SelectList(db.Depatements, "idDepartement", "nomDepartement", employeeTable.idDepartement);
+            return View(employeeTable);
+        }
+
+        // POST: EmployeeTables/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEmploye([Bind(Include = "IdEmp,PrenomEmp,NomEmp,MailEmp,TelEmp,Address,DateNEmp,SexeEmp,DateRecEmp,idDepartement,PosteEmp,SalaireEmp,pointsEmp")] EmployeeTable employeeTable)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(employeeTable).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.idDepartement = new SelectList(db.Depatements, "idDepartement", "nomDepartement", employeeTable.idDepartement);
+            return View(employeeTable);
+        }
+
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

@@ -112,7 +112,27 @@ namespace Projet_de_fin_de_formation.Controllers
             }
             return View(chantier);
         }
+        public ActionResult Terminer(int id)
+        {
+            Chantier ch = db.Chantiers.Find(id);
+            ch.statut = "Terminé";
+            ch.DateFinProj = DateTime.Now;
+            db.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Recompenser(Chantier chantier)
+        {
+            Chantier ch = db.Chantiers.Find(chantier.IdChantier);
+            ch.statut = "Terminé";
+            ch.DateFinProj = DateTime.Now;
+            EmployeeTable employe = db.EmployeeTables.Find(ch.ChefProj);
+            employe.pointsEmp += chantier.pointsA.GetValueOrDefault();
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "EmployeeTables");
+        }
         // POST: Chantiers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -123,7 +143,7 @@ namespace Projet_de_fin_de_formation.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -131,6 +151,13 @@ namespace Projet_de_fin_de_formation.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult IndexFiltred()
+        {
+
+            List<Chantier> chantiers = db.Chantiers.Where(m => m.IdClient == Constantes.useClientObject.idClient).ToList();
+            return View(chantiers);
+
         }
     }
 }

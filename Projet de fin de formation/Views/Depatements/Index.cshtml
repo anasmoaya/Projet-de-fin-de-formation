@@ -21,9 +21,10 @@
             @Html.DisplayFor(modelItem => item.nomDepartement)
         </td>
         <td>
-            @Html.ActionLink("Modifier", "Edit", new { id=item.idDepartement }) |
 
-            @Html.ActionLink("Supprimer", "Delete", new { id=item.idDepartement })
+            <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit",new { id=item.idDepartement })'">Modifier</button>
+
+            <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.idDepartement })'">Supprimer</button>
         </td>
     </tr>
 }

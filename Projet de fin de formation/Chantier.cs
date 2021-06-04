@@ -11,8 +11,7 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Chantier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +20,6 @@ namespace Projet_de_fin_de_formation
             this.reclamations = new HashSet<reclamation>();
         }
     
-        [Key]
         public int IdChantier { get; set; }
         public string NomChantier { get; set; }
         public string AdresseChantier { get; set; }
@@ -30,10 +28,11 @@ namespace Projet_de_fin_de_formation
         public string statut { get; set; }
         public string ChefProj { get; set; }
         public Nullable<int> IdClient { get; set; }
+        public Nullable<int> pointsA { get; set; }
     
-        public virtual EmployeeTable EmployeeTable { get; set; }
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<reclamation> reclamations { get; set; }
+        public virtual EmployeeTable EmployeeTable { get; set; }
     }
 }

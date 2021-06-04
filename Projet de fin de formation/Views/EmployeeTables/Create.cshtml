@@ -64,7 +64,7 @@
     <div class="form-group">
         <label for="DateNEmp">Date de Naissance:</label>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DateNEmp, new { htmlAttributes = new { @class = "form-control datepicker" } })
+            @Html.EditorFor(model => model.DateNEmp, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.DateNEmp, "", new { @class = "text-danger" })
         </div>
     </div>

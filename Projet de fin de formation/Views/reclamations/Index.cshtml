@@ -5,48 +5,48 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Reclamations</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
+
+
         <th>
-            @Html.DisplayNameFor(model => model.dateRec)
+            <label for="Client.Nom.Client">Client</label>
+        </th>
+
+        <th>
+            <label for="Chantier.NomChantier">Chantier</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Remarque)
+            <label>Remarque</label>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Chantier.NomChantier)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateRec)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Remarque)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Chantier.NomChantier)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.NomClient)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idReclamation }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idReclamation }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idReclamation })
-        </td>
-    </tr>
+<tr>
+
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Client.NomClient)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Chantier.NomChantier)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Remarque)
+    </td>
+    <td>
+
+        <button type="button" class="btn btn-outline-success" onclick="location.href='@Url.Action("Details",new { id=item.idReclamation })'">Voir</button>
+
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.idReclamation })'">Supprimer</button>
+    </td>
+</tr>
 }
 
 </table>

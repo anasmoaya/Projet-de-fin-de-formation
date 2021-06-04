@@ -60,7 +60,7 @@ namespace Projet_de_fin_de_formation.Controllers
             //        }, CookieAuthenticationDefaults.AuthenticationScheme);
             //        ;
             //    }
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("Index", "EmployeeTables");
 
 
             //}

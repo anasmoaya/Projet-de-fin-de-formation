@@ -1,0 +1,49 @@
+﻿
+@model Projet_de_fin_de_formation.EmployeeTable
+@{
+    ViewBag.Title = "IndexEmploye";
+    Layout = "~/Views/Shared/_LayoutEmploye.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model=>model.NomEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.PrenomEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.SexeEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.MailEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.TelEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.Address)</th>
+        <th>@Html.DisplayNameFor(model=>model.DateNEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.DateRecEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.Depatement.nomDepartement)</th>
+        <th>@Html.DisplayNameFor(model=>model.PosteEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.SalaireEmp)</th>
+        <th>@Html.DisplayNameFor(model=>model.pointsEmp)</th>
+        <th></th>
+        
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayFor(model=>model.NomEmp)</td>
+        <td>@Html.DisplayFor(model=>model.PrenomEmp)</td>
+        <td>@Html.DisplayFor(model=>model.SexeEmp)</td>
+        <td>@Html.DisplayFor(model=>model.MailEmp)</td>
+        <td>@Html.DisplayFor(model=>model.TelEmp)</td>
+        <td>@Html.DisplayFor(model=>model.Address)</td>
+        <td>@Html.DisplayFor(model=>model.DateNEmp)</td>
+        <td>@Html.DisplayFor(model=>model.DateRecEmp)</td>
+        <td>@Html.DisplayFor(model=>model.Depatement.nomDepartement)</td>
+        <td>@Html.DisplayFor(model=>model.PosteEmp)</td>
+        <td>@Html.DisplayFor(model=>model.SalaireEmp)</td>
+        <td>@Html.DisplayFor(model=>model.pointsEmp)</td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" onclick="location.href='@Url.Action("EditEmploye",new { id=Model.IdEmp })'">Modifier mes informations</button>
+
+        </td>
+
+    </tr>
+    
+
+</table>
+
+

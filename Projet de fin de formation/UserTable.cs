@@ -11,11 +11,9 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class UserTable
     {
-        [Key]
         public string IdEmp { get; set; }
         public string Pseudo { get; set; }
         public string password { get; set; }

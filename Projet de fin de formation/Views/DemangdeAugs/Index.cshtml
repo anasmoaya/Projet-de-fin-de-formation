@@ -5,36 +5,39 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<script>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+</script>
+<h2>Demandes d'augementation de salaire</h2>
+
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.etat)
+            <label>Employé</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
+            Statut
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.etat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdDemande }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdDemande }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdDemande })
-        </td>
-    </tr>
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.etat)
+    </td>
+    <td>
+        <button type="button" class="btn btn-outline-success" onclick="location.href='@Url.Action("Details",new { id=item.idDemande })'">voir</button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete",new { id=item.idDemande })'">Supprimer</button>
+        
+
+    </td>
+</tr>
 }
 
 </table>

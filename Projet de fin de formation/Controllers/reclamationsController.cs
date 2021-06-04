@@ -43,16 +43,21 @@ namespace Projet_de_fin_de_formation.Controllers
             ViewBag.idClient = new SelectList(db.Clients, "idClient", "NomClient");
             return View();
         }
+        
 
         // POST: reclamations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idReclamation,idClient,idChantier,dateRec,Remarque")] reclamation reclamation)
+        public ActionResult Create([Bind(Include = "idReclamation,idClient,idChantier,dateRec,Remarque")] reclamation reclamation,int id)
         {
             if (ModelState.IsValid)
             {
+                reclamation.idClient = Constantes.useClientObject.idClient;
+                reclamation.idChantier = id;
+                reclamation.dateRec = DateTime.Now;
+
                 db.reclamations.Add(reclamation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,9 +65,13 @@ namespace Projet_de_fin_de_formation.Controllers
 
             ViewBag.idChantier = new SelectList(db.Chantiers, "IdChantier", "NomChantier", reclamation.idChantier);
             ViewBag.idClient = new SelectList(db.Clients, "idClient", "NomClient", reclamation.idClient);
-            return View(reclamation);
+            return RedirectToAction("IndexFiltred","Chantiers");
         }
-
+        public ActionResult IndexFiltred()
+        {
+            List<reclamation> Rec = db.reclamations.Where(m => m.idClient == Constantes.useClientObject.idClient).ToList();
+            return View(Rec);
+        }
         // GET: reclamations/Edit/5
         public ActionResult Edit(int? id)
         {

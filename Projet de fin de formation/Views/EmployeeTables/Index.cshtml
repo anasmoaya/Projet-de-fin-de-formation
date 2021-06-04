@@ -5,12 +5,10 @@
     Layout = "~/Views/Shared/_LayoutSuperAdmin.cshtml";
 }
 
-<h2>Ajouter Un Employé</h2>
-
 <p>
-    @Html.ActionLink("Ajouter un Employé", "Create")
+    @Html.ActionLink("Ajouter un employé", "Create")
 </p>
-<table class="table table-striped ">
+<table class="table">
     <tr>
         <th>
             <label for="PrenomEmp">Prenom</label>
@@ -80,7 +78,16 @@
             @Html.DisplayFor(modelItem => item.DateNEmp)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SexeEmp)
+            @{ var sexe = item.SexeEmp;}
+            @if (sexe=="1")
+                {
+                 <span>Male</span>
+                }
+                else
+                {
+                <span>Femelle</span>
+
+                }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateRecEmp)
