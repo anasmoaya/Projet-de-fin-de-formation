@@ -11,7 +11,9 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Chantier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,19 +22,36 @@ namespace Projet_de_fin_de_formation
             this.reclamations = new HashSet<reclamation>();
         }
     
+        [DisplayName("Id Chantier")]
+        [DataType(DataType.Text)]
         public int IdChantier { get; set; }
+        [DisplayName("Nom de Chantier")]
+        [DataType(DataType.Text)]
         public string NomChantier { get; set; }
+        [DisplayName("Adresse Chantier")]
+        [DataType(DataType.MultilineText)]
         public string AdresseChantier { get; set; }
-        public System.DateTime DateDebChantier { get; set; }
+        [DisplayName("Date de debut")]
+        [DataType(DataType.Date)]
+        public Nullable<System.DateTime> DateDebChantier { get; set; }
+        [DisplayName("Date fin")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateFinProj { get; set; }
+        [DisplayName("Etat")]
+        [DataType(DataType.Text)]
         public string statut { get; set; }
+        [DisplayName("Chef de Chantier")]
+        [DataType(DataType.Text)]
         public string ChefProj { get; set; }
-        public Nullable<int> IdClient { get; set; }
+        [DisplayName("Client")]
+        [DataType(DataType.Text)]
+        public Nullable<int> idClient { get; set; }
+        [DisplayName("Points Ajouté")]
         public Nullable<int> pointsA { get; set; }
-    
+       
+        public virtual EmployeeTable EmployeeTable { get; set; }
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<reclamation> reclamations { get; set; }
-        public virtual EmployeeTable EmployeeTable { get; set; }
     }
 }

@@ -11,12 +11,19 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserTable
     {
+        [DisplayName("Identification Employé")]
         public string IdEmp { get; set; }
+        [DisplayName("Pseudo")]
         public string Pseudo { get; set; }
+        [DisplayName("Mot de passe")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
+
         public bool Admin { get; set; }
     
         public virtual EmployeeTable EmployeeTable { get; set; }

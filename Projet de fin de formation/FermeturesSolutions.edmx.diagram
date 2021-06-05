@@ -5,24 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="636ce7f463f64eb7b1d0331bdf7f83ac" Name="Diagram1">
-        <EntityTypeShape EntityType="fermetures_solutionsModel.Chantier" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="fermetures_solutionsModel.Client" Width="1.5" PointX="7.75" PointY="2.75" IsExpanded="true" />
         <EntityTypeShape EntityType="fermetures_solutionsModel.Congee" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="fermetures_solutionsModel.DemangdeAug" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="fermetures_solutionsModel.Depatement" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="fermetures_solutionsModel.EmployeeTable" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="fermetures_solutionsModel.reclamation" Width="1.5" PointX="12.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="fermetures_solutionsModel.UserClient" Width="1.5" PointX="10" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="fermetures_solutionsModel.UserTable" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
-        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__IdClie__76969D2E" ManuallyRouted="false" />
-        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCha__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCli__797309D9" ManuallyRouted="false" />
-        <AssociationConnector Association="fermetures_solutionsModel.FK__UserClien__idCli__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="fermetures_solutionsModel.FK__Congeet2__IdEmp__00200768" ManuallyRouted="false" />
         <AssociationConnector Association="fermetures_solutionsModel.FK__DemangdeA__IdEmp__09A971A2" ManuallyRouted="false" />
         <AssociationConnector Association="fermetures_solutionsModel.FK__EmployeeT__idDep__59063A47" ManuallyRouted="false" />
         <AssociationConnector Association="fermetures_solutionsModel.FK__UserTable__IdEmp__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__ChefPr__0C85DE4D" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.UserClient" Width="1.5" PointX="10" PointY="6" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Chantier" Width="1.5" PointX="10" PointY="1.5" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__ChefPr__2A164134" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.Client" Width="1.5" PointX="7.75" PointY="3.5" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__Chantier__idClie__2B0A656D" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__userClien__idCli__208CD6FA" />
+        <EntityTypeShape EntityType="fermetures_solutionsModel.reclamation" Width="1.5" PointX="12.25" PointY="2.5" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCha__2FCF1A8A" />
+        <AssociationConnector Association="fermetures_solutionsModel.FK__reclamati__idCli__2EDAF651" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

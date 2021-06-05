@@ -11,7 +11,9 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EmployeeTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,19 +24,40 @@ namespace Projet_de_fin_de_formation
             this.UserTables = new HashSet<UserTable>();
             this.Chantiers = new HashSet<Chantier>();
         }
-    
+        [DisplayName("Identification")]
         public string IdEmp { get; set; }
+        [DisplayName("Prenom")]
+        [DataType(DataType.Text)]
         public string PrenomEmp { get; set; }
+        [DisplayName("Nom")]
+        [DataType(DataType.Text)]
         public string NomEmp { get; set; }
+        [DisplayName("Email")]
+        [DataType(DataType.EmailAddress)]
         public string MailEmp { get; set; }
+
+        [DisplayName("Telephone")]
+        [DataType(DataType.PhoneNumber)]
         public string TelEmp { get; set; }
+        [DisplayName("Adresse")]
+        [DataType(DataType.MultilineText)]
         public string Address { get; set; }
+        [DisplayName("Date de naissance")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateNEmp { get; set; }
+        [DisplayName("Sexe")]
         public string SexeEmp { get; set; }
+        [DisplayName("Date de Recrutement")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecEmp { get; set; }
+        [DisplayName("Département")]
         public Nullable<int> idDepartement { get; set; }
+        [DisplayName("Grade")]
+        [DataType(DataType.Text)]
         public string PosteEmp { get; set; }
+        [DisplayName("Salaire")]
         public decimal SalaireEmp { get; set; }
+        [DisplayName("Points")]
         public int pointsEmp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

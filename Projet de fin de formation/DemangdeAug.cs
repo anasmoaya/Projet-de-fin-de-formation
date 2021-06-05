@@ -11,11 +11,15 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class DemangdeAug
     {
+        [DisplayName("Identification")]
         public int idDemande { get; set; }
+        [DisplayName("Employé")]
         public string IdEmp { get; set; }
+        [DisplayName("Etat")]
         public string etat { get; set; }
         public Nullable<decimal> MontantAug { get; set; }
         public Nullable<System.DateTime> DateDemande { get; set; }

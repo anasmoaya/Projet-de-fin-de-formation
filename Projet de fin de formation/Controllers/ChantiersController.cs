@@ -60,7 +60,7 @@ namespace Projet_de_fin_de_formation.Controllers
             }
 
             ViewBag.ChefProj = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", chantier.ChefProj);
-            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.IdClient);
+            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.idClient);
             return View(chantier);
         }
 
@@ -77,7 +77,7 @@ namespace Projet_de_fin_de_formation.Controllers
                 return HttpNotFound();
             }
             ViewBag.ChefProj = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", chantier.ChefProj);
-            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.IdClient);
+            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.idClient);
             return View(chantier);
         }
 
@@ -95,7 +95,7 @@ namespace Projet_de_fin_de_formation.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ChefProj = new SelectList(db.EmployeeTables, "IdEmp", "PrenomEmp", chantier.ChefProj);
-            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.IdClient);
+            ViewBag.IdClient = new SelectList(db.Clients, "idClient", "NomClient", chantier.idClient);
             return View(chantier);
         }
 
@@ -156,7 +156,15 @@ namespace Projet_de_fin_de_formation.Controllers
         public ActionResult IndexFiltred()
         {
 
-            List<Chantier> chantiers = db.Chantiers.Where(m => m.IdClient == Constantes.useClientObject.idClient).ToList();
+            List<Chantier> chantiers = db.Chantiers.Where(m => m.idClient == Constantes.useClientObject.idClient).ToList();
+            return View(chantiers);
+
+        }
+
+        public ActionResult IndexFiltredEmploye()
+        {
+
+            List<Chantier> chantiers = db.Chantiers.Where(m => m.ChefProj == Constantes.user.IdEmp).ToList(); 
             return View(chantiers);
 
         }

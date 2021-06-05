@@ -70,7 +70,7 @@
                         <img src="~/FrontEnd/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">ANASS MOAYA</a>
+                        <a href="#" class="d-block">@Html.DisplayName(Constantes.useClientObject.Client.NomClient)</a>
                     </div>
                 </div>
 
@@ -127,12 +127,10 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
+                                <li class="breadcrumb-item"><a href="@Url.Action("Deconnexion","UserTables",new {id=Constantes.IdUtilisateurEmploy })">Déconnexion</a></li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -196,6 +194,7 @@
     <script src="~/FrontEnd/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/FrontEnd/dist/js/pages/dashboard.js"></script>
+    <script src="~/Scripts/site.js"></script>
     @RenderSection("scripts", required: false)
 
 </body>

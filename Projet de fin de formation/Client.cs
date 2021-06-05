@@ -11,27 +11,35 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Client
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
             this.Chantiers = new HashSet<Chantier>();
-            this.reclamations = new HashSet<reclamation>();
             this.UserClients = new HashSet<UserClient>();
+            this.reclamations = new HashSet<reclamation>();
         }
-    
+        [DisplayName("Id Client")]
         public int idClient { get; set; }
+        [DisplayName("Nom Client")]
+        [DataType(DataType.Text)]
         public string NomClient { get; set; }
+        [DisplayName("Adresse de Client")]
+        [DataType(DataType.MultilineText)]
         public string AdresseClient { get; set; }
+        [DisplayName("Telephone")]
+        [DataType(DataType.PhoneNumber)]
         public string TelCLient { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chantier> Chantiers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<reclamation> reclamations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserClient> UserClients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<reclamation> reclamations { get; set; }
     }
 }

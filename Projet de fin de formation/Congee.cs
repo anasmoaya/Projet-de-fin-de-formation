@@ -11,11 +11,21 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Congee
     {
+        [DisplayName("Id Congée")]
         public int idConge { get; set; }
+        [DisplayName("Employé)"]
         public string IdEmp { get; set; }
+
+        private int DataType(DataType text)
+        {
+            throw new NotImplementedException();
+        }
+
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public string Reason { get; set; }

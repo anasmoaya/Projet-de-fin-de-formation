@@ -21,7 +21,7 @@ namespace Projet_de_fin_de_formation.Controllers
             UserClient user = db.UserClients.Where(m => m.pseudo == userClient.pseudo && m.password == userClient.password).FirstOrDefault();
             if(user == null)
             {
-                return RedirectToAction("Index");
+                return HttpNotFound();
             }
             else
             {
@@ -32,6 +32,7 @@ namespace Projet_de_fin_de_formation.Controllers
                 return RedirectToAction("IndexFiltred", "Chantiers");
             }
         }
+
        
     }
 }

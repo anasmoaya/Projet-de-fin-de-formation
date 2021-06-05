@@ -11,7 +11,9 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Depatement
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +21,11 @@ namespace Projet_de_fin_de_formation
         {
             this.EmployeeTables = new HashSet<EmployeeTable>();
         }
-    
+
+        [DisplayName("Identification")]
         public int idDepartement { get; set; }
+        [DisplayName("Nom de département")]
+        [DataType(DataType.Text)]
         public string nomDepartement { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,16 +11,27 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class reclamation
+
     {
-        public Nullable<int> idClient { get; set; }
-        public Nullable<int> idChantier { get; set; }
-        public Nullable<System.DateTime> dateRec { get; set; }
-        public string Remarque { get; set; }
+        [DisplayName("Identification")]
         public int idReclamation { get; set; }
-    
+        [DisplayName("Client")]
+        public Nullable<int> idClient { get; set; }
+        [DisplayName("Date de Reclamation")]
+        [DataType(DataType.Date)]
+        public Nullable<System.DateTime> dateRec { get; set; }
+        [DisplayName("Remarque")]
+        [DataType(DataType.MultilineText)]
+        public string Remarque { get; set; }
+        [DisplayName("Identification Chantier")]
+        public Nullable<int> idChantier { get; set; }
+        [DisplayName("Chantier")]
         public virtual Chantier Chantier { get; set; }
+        [DisplayName("Client")]
         public virtual Client Client { get; set; }
     }
 }

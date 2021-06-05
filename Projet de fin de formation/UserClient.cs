@@ -11,13 +11,19 @@ namespace Projet_de_fin_de_formation
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserClient
     {
+        [DisplayName("Pseudo")]
         public string pseudo { get; set; }
+        [DisplayName("Mot de passe")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
+        [DisplayName("Identification Client")]
         public Nullable<int> idClient { get; set; }
-    
+        [DisplayName("Client")]
         public virtual Client Client { get; set; }
     }
 }

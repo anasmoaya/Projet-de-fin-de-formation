@@ -60,7 +60,7 @@ namespace Projet_de_fin_de_formation.Controllers
 
                 db.reclamations.Add(reclamation);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexFiltred");
             }
 
             ViewBag.idChantier = new SelectList(db.Chantiers, "IdChantier", "NomChantier", reclamation.idChantier);

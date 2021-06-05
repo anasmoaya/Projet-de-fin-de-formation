@@ -572,6 +572,7 @@
     <Compile Include="Controllers\EmployeeTablesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\reclamationsController.cs" />
+    <Compile Include="Controllers\UserClientsController.cs" />
     <Compile Include="Controllers\UserTablesController.cs" />
     <Compile Include="DemangdeAug.cs">
       <DependentUpon>FermeturesSolutions.tt</DependentUpon>
@@ -2815,6 +2816,12 @@
     <Content Include="Views\reclamations\IndexFiltred.cshtml" />
     <Content Include="Views\Introuvable.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />
+    <Content Include="Views\UserClients\Create.cshtml" />
+    <Content Include="Views\UserClients\Delete.cshtml" />
+    <Content Include="Views\UserClients\Details.cshtml" />
+    <Content Include="Views\UserClients\Edit.cshtml" />
+    <Content Include="Views\UserClients\Index.cshtml" />
+    <Content Include="Views\Chantiers\IndexFiltredEmploye.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
