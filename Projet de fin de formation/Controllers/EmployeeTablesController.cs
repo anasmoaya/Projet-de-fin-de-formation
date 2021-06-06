@@ -52,9 +52,18 @@ namespace Projet_de_fin_de_formation.Controllers
         {
             if (ModelState.IsValid)
             {
+                EmployeeTable em = db.EmployeeTables.Find(employeeTable.IdEmp);
+
+                if (em == null)
+                {
                 db.EmployeeTables.Add(employeeTable);
                 db.SaveChanges();
+                }
+                
                 return RedirectToAction("Index");
+
+       
+               
             }
 
             ViewBag.idDepartement = new SelectList(db.Depatements, "idDepartement", "nomDepartement", employeeTable.idDepartement);
@@ -156,12 +165,11 @@ namespace Projet_de_fin_de_formation.Controllers
             {
                 db.Entry(employeeTable).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexEmploye");
             }
             ViewBag.idDepartement = new SelectList(db.Depatements, "idDepartement", "nomDepartement", employeeTable.idDepartement);
             return View(employeeTable);
         }
-
 
 
 

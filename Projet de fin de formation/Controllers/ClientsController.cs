@@ -46,7 +46,7 @@ namespace Projet_de_fin_de_formation.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idClient,NomClient,AdresseClient,TelCLient")] Client client)
+        public ActionResult Create([Bind(Include = "NomClient,AdresseClient,TelCLient")] Client client)
         {
             if (ModelState.IsValid)
             {

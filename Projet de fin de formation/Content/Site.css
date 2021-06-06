@@ -6,8 +6,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,7 +21,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 50px;
 }
 .nav-bar{
     background-color:antiquewhite;
@@ -30,4 +30,7 @@ td{
     text-align:center;
     vertical-align:central;
    
+}
+.form-control{
+    width:50px
 }

@@ -21,7 +21,11 @@ namespace Projet_de_fin_de_formation
         public string IdEmp { get; set; }
         [DisplayName("Etat")]
         public string etat { get; set; }
+        [DisplayName("Montant d'augementation")]
+
         public Nullable<decimal> MontantAug { get; set; }
+        [DisplayName("Date de la demande")]
+
         public Nullable<System.DateTime> DateDemande { get; set; }
     
         public virtual EmployeeTable EmployeeTable { get; set; }

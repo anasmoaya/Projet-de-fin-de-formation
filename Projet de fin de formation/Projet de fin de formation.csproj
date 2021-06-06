@@ -570,6 +570,7 @@
     <Compile Include="Controllers\DemangdeAugsController.cs" />
     <Compile Include="Controllers\DepatementsController.cs" />
     <Compile Include="Controllers\EmployeeTablesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\reclamationsController.cs" />
     <Compile Include="Controllers\UserClientsController.cs" />
@@ -710,6 +711,36 @@
     <Content Include="FrontEnd\dist\js\pages\dashboard.js" />
     <Content Include="FrontEnd\dist\js\pages\dashboard2.js" />
     <Content Include="FrontEnd\dist\js\pages\dashboard3.js" />
+    <Content Include="FrontEnd\ld\css\bootstrap.css" />
+    <Content Include="FrontEnd\ld\css\fontawesome-all.css" />
+    <Content Include="FrontEnd\ld\css\owl.carousel.min.css" />
+    <Content Include="FrontEnd\ld\css\owl.theme.default.min.css" />
+    <Content Include="FrontEnd\ld\css\prettyPhoto.css" />
+    <Content Include="FrontEnd\ld\css\style.css" />
+    <Content Include="FrontEnd\ld\images\abt.jpg" />
+    <Content Include="FrontEnd\ld\images\banner1.jpg" />
+    <Content Include="FrontEnd\ld\images\logo.png" />
+    <Content Include="FrontEnd\ld\images\Preloader_2.gif" />
+    <Content Include="FrontEnd\ld\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="FrontEnd\ld\images\top_move.png" />
+    <Content Include="FrontEnd\ld\js\bootstrap.js" />
+    <Content Include="FrontEnd\ld\js\easing.js" />
+    <Content Include="FrontEnd\ld\js\index.js" />
+    <Content Include="FrontEnd\ld\js\jquery-1.7.2.js" />
+    <Content Include="FrontEnd\ld\js\jquery-3.2.1.min.js" />
+    <Content Include="FrontEnd\ld\js\jquery.countup.js" />
+    <Content Include="FrontEnd\ld\js\jquery.prettyPhoto.js" />
+    <Content Include="FrontEnd\ld\js\jquery.quicksand.js" />
+    <Content Include="FrontEnd\ld\js\jquery.vide.min.js" />
+    <Content Include="FrontEnd\ld\js\jquery.waypoints.min.js" />
+    <Content Include="FrontEnd\ld\js\move-top.js" />
+    <Content Include="FrontEnd\ld\js\owl.carousel.js" />
+    <Content Include="FrontEnd\ld\js\script.js" />
+    <Content Include="FrontEnd\ld\js\universe.js" />
+    <Content Include="FrontEnd\ld\typography.html" />
+    <Content Include="FrontEnd\ld\webfonts\fa-brands-400.svg" />
+    <Content Include="FrontEnd\ld\webfonts\fa-regular-400.svg" />
+    <Content Include="FrontEnd\ld\webfonts\fa-solid-900.svg" />
     <Content Include="FrontEnd\Login\css\font-awesome.min.css" />
     <Content Include="FrontEnd\Login\css\style.css" />
     <Content Include="FrontEnd\Login\fonts\fontawesome-webfont.svg" />
@@ -2733,6 +2764,19 @@
     <Content Include="FermeturesSolutions.edmx.diagram">
       <DependentUpon>FermeturesSolutions.edmx</DependentUpon>
     </Content>
+    <Content Include="FrontEnd\ld\.DS_Store" />
+    <Content Include="FrontEnd\ld\webfonts\fa-brands-400.eot" />
+    <Content Include="FrontEnd\ld\webfonts\fa-brands-400.ttf" />
+    <Content Include="FrontEnd\ld\webfonts\fa-brands-400.woff" />
+    <Content Include="FrontEnd\ld\webfonts\fa-brands-400.woff2" />
+    <Content Include="FrontEnd\ld\webfonts\fa-regular-400.eot" />
+    <Content Include="FrontEnd\ld\webfonts\fa-regular-400.ttf" />
+    <Content Include="FrontEnd\ld\webfonts\fa-regular-400.woff" />
+    <Content Include="FrontEnd\ld\webfonts\fa-regular-400.woff2" />
+    <Content Include="FrontEnd\ld\webfonts\fa-solid-900.eot" />
+    <Content Include="FrontEnd\ld\webfonts\fa-solid-900.ttf" />
+    <Content Include="FrontEnd\ld\webfonts\fa-solid-900.woff" />
+    <Content Include="FrontEnd\ld\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2822,6 +2866,7 @@
     <Content Include="Views\UserClients\Edit.cshtml" />
     <Content Include="Views\UserClients\Index.cshtml" />
     <Content Include="Views\Chantiers\IndexFiltredEmploye.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

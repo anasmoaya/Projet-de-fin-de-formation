@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>IndexFiltred</h2>
+<h2>Mes Chantiers</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -27,15 +24,11 @@
         <th>
             @Html.DisplayNameFor(model => model.statut)
         </th>
+        
         <th>
-            @Html.DisplayNameFor(model => model.pointsA)
+            <label>Chef de chantier</label>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmployeeTable.PrenomEmp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Client.NomClient)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -56,15 +49,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.statut)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.pointsA)
+            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp) @Html.DisplayFor(modelItem => item.EmployeeTable.NomEmp)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeTable.PrenomEmp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.NomClient)
-        </td>
+       
         <td>
             <button type="button" class="btn btn-outline-danger" onclick="location.href='@Url.Action("Create","reclamations",new { id=item.IdChantier })'">Reclamer</button>
         </td>

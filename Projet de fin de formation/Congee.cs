@@ -18,7 +18,7 @@ namespace Projet_de_fin_de_formation
     {
         [DisplayName("Id Congée")]
         public int idConge { get; set; }
-        [DisplayName("Employé)"]
+        [DisplayName("Employé")]
         public string IdEmp { get; set; }
 
         private int DataType(DataType text)
@@ -26,11 +26,18 @@ namespace Projet_de_fin_de_formation
             throw new NotImplementedException();
         }
 
+        [DisplayName("Date de début")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
         public System.DateTime StartDate { get; set; }
+
+        [DisplayName("Date fin")]
+        [DataType(System.ComponentModel.DataAnnotations.DataType.Date)]
         public System.DateTime EndDate { get; set; }
+        [DisplayName("Raison")]
         public string Reason { get; set; }
+        [DisplayName("Statut")]
         public string Status { get; set; }
-    
+        [DisplayName("Employé")]
         public virtual EmployeeTable EmployeeTable { get; set; }
     }
 }

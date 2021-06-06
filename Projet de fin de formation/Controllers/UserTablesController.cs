@@ -158,7 +158,7 @@ namespace Projet_de_fin_de_formation.Controllers
         public ActionResult Deconnexion()
         {
             Session.Abandon();
-            return RedirectToAction("Login", "Login");
+            return RedirectToAction("Index", "Home");
         }
 
 

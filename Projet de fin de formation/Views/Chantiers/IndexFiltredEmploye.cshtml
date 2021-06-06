@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_LayoutEmploye.cshtml";
 }
 
-<h2>IndexFiltredEmploye</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Mes Chantiers</h2>
 <table class="table">
     <tr>
         <th>
@@ -65,11 +61,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Client.NomClient)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdChantier }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdChantier }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdChantier })
-        </td>
+       
     </tr>
 }
 

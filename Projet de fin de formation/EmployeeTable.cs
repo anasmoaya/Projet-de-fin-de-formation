@@ -27,10 +27,8 @@ namespace Projet_de_fin_de_formation
         [DisplayName("Identification")]
         public string IdEmp { get; set; }
         [DisplayName("Prenom")]
-        [DataType(DataType.Text)]
         public string PrenomEmp { get; set; }
         [DisplayName("Nom")]
-        [DataType(DataType.Text)]
         public string NomEmp { get; set; }
         [DisplayName("Email")]
         [DataType(DataType.EmailAddress)]
@@ -40,7 +38,6 @@ namespace Projet_de_fin_de_formation
         [DataType(DataType.PhoneNumber)]
         public string TelEmp { get; set; }
         [DisplayName("Adresse")]
-        [DataType(DataType.MultilineText)]
         public string Address { get; set; }
         [DisplayName("Date de naissance")]
         [DataType(DataType.Date)]
@@ -53,8 +50,8 @@ namespace Projet_de_fin_de_formation
         [DisplayName("Département")]
         public Nullable<int> idDepartement { get; set; }
         [DisplayName("Grade")]
-        [DataType(DataType.Text)]
         public string PosteEmp { get; set; }
+
         [DisplayName("Salaire")]
         public decimal SalaireEmp { get; set; }
         [DisplayName("Points")]

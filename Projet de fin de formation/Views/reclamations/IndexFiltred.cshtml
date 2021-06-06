@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
-<h2>IndexFiltred</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Mes Reclamations</h2>
 <table class="table">
     <tr>
         <th>
@@ -42,9 +38,7 @@
             @Html.DisplayFor(modelItem => item.Client.NomClient)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idReclamation }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idReclamation }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idReclamation })
+           
         </td>
     </tr>
 }
